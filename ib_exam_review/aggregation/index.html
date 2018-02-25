@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<script>
+(function() {
+  // variable to store our current state
+  var cbstate;
+
+  // bind to the onload event
+  window.addEventListener('load', function() {
+    // Get the current state from localstorage
+    // State is stored as a JSON string
+    cbstate = JSON.parse(localStorage['CBState'] || '{}');
+
+    // Loop through state array and restore checked
+    // state for matching elements
+    for(var i in cbstate) {
+      var el = document.querySelector('input[name="' + i + '"]');
+      if (el) el.checked = true;
+    }
+
+    // Get all checkboxes that you want to monitor state for
+    var cb = document.getElementsByTagName('input');
+
+
+    // Loop through results and ...
+    for(var i = 0; i < cb.length; i++) {
+
+      //bind click event handler
+      cb[i].addEventListener('click', function(evt) {
+        // If checkboxe is checked then save to state
+        if (this.checked) {
+          cbstate[this.name] = true;
+        }
+
+       // Else remove from state
+        else if (cbstate[this.name]) {
+          delete cbstate[this.name];
+        }
+       // Persist state
+        localStorage.CBState = JSON.stringify(cbstate);
+      });
+    }
+  });
+})();
+</script>
+<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+<style media="screen">
+table, th, td {
+  border-collapse: collapse;
+  border:1px solid black;
+
+  border-spacing: 1px;
+
+}
+body, td{
+  background-color: #555;
+  color: #CCC
+}
+h2{
+  padding:10px;
+  text-align: center;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans';
+}
+th{
+  background-color: #333;
+  height: 10px;
+  padding: 10px;
+  color: #DEDEDE
+}
+td{
+  vertical-align: center;
+  height: 10px;
+  padding: 10px;
+  width: 20%;
+  text-align: center;
+}
+</style>
+  <head>
+    <meta charset="utf-8">
+    <title>IB MATHS SL AGGREGATED EXAM REVIEW</title>
+    <h1 style = 'background-color:#FFA500; text-align:center; color:#000; padding:15px; margin:0px'>IB MATHS SL AGGREGATED EXAM REVIEW</h1>
+  </head>
+
+  <body >
+    <div style = 'color:#222; background-color:#F6921D'>
+      <h2>This is a checklist for the IB SL Mathematics Exam Review</h2>
+      <h2>It contains all the past IB exams and their markschemes, with a useful checklist feature.</h2>
+    </div>
+    <h2 style = 'padding:15px;margin:0px;text-align:center;background-color:#222;color:#FFF'>Exams</h2>
+    <div style = 'background-color:#5FCC9C'>
+      <table>
+        <tr>
+          <th>Date [Mth] [Yr]</th>
+          <th>TimeZone</th>
+          <th>Paper Type</th>
+          <th>ExamPDF</th>
+          <th>MarkschemePDF</th>
+          <th>DONE?</th>
+          <th>Notes</th>
+        </tr>
+        <tr>
+          <td>May 06</td>
+          <td>1</td>
+          <td>1</td>
+          <td>
+            <a href="../raw/May_06_TZ1_p1.pdf">Exam</a>
+          </td>
+          <td>
+            <a href="../raw/Mathematical_methods_paper_1_TZ1_SL_markscheme_m06.pdf">Markscheme</a>
+          </td>
+          <td>
+            <input type="checkbox" name="m06tz1p1" value="" class="save-cb-state">
+          </td>
+          <td>
+            <p>do not do questions 1,5,9,11,12</p>
+          </td>
+        </tr>
+        <tr>
+          <td>May 06</td>
+          <td>1</td>
+          <td>2</td>
+          <td>
+            <a href="../raw/May_06_TZ1_p2.pdf">Exam</a>
+          </td>
+          <td>
+            <a href="../raw/Mathematical_methods_paper_2_TZ1_SL_markscheme_m06.pdf">Markscheme
+            </a>
+          </td>
+          <td>
+            <input type="checkbox" name="m06tz1p2" value="" class="save-cb-state" >
+          </td>
+          <td>
+            <p>do not do question #1</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <p>
+      SRC:
+      <a href="http://www.ibmaterials.tk/IB%20PAST%20PAPERS%20-%20YEAR/">IB Docs Host Server</a>
+    </p>
+    <p>Compiled By Wintermut3</p>
+  </body>
+</html>
