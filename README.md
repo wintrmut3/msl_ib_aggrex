@@ -1,2 +1,4 @@
 # msl_ib_aggrex
-IB SL Maths exams in aggregate, organized by date.
+All IB SL Maths exams, organized by date with a checklist feature.
+
+Implementation - HTML/JS/CSS
